@@ -3,7 +3,7 @@ I do this kind of thing a lot with my apps that are cross-platform between WinFo
     using System.Diagnostics;
     using System.Threading.Tasks;
 
-    namespace net6_portable_library
+    namespace net_standard_portable_library
     {
         public enum RuntimePlatform
         {
@@ -15,7 +15,6 @@ I do this kind of thing a lot with my apps that are cross-platform between WinFo
         }
         public abstract class BusinessLogic
         {
-
             public BusinessLogic(RuntimePlatform platform) => RuntimePlatform = platform;
             protected abstract Task<bool> DisplayAlert(string title, string message, string accept, string cancel);
             public async Task<bool> TestPopup()
@@ -31,6 +30,7 @@ I do this kind of thing a lot with my apps that are cross-platform between WinFo
         }
     }
 
+
 ***
 Another option I've had success with is having `interface` or `delegate` members  in the PCL lib that the platform-specific client can populate.
 
@@ -42,7 +42,7 @@ Another option I've had success with is having `interface` or `delegate` members
     using System;
     using System.Threading.Tasks;
     using System.Windows.Forms;
-    using net6_portable_library;
+    using net_standard_portable_library;
 
     public partial class MainForm : Form
     {
@@ -87,6 +87,8 @@ Another option I've had success with is having `interface` or `delegate` members
 **Android client**
 
 [![maui client][2]][2]
+
+    using net_standard_portable_library;
 
     namespace maui_client_of_portable_library
     {

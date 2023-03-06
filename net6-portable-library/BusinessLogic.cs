@@ -13,7 +13,6 @@
         }
         public abstract class BusinessLogic
         {
-
             public BusinessLogic(RuntimePlatform platform) => RuntimePlatform = platform;
             protected abstract Task<bool> DisplayAlert(string title, string message, string accept, string cancel);
             public async Task<bool> TestPopup()
