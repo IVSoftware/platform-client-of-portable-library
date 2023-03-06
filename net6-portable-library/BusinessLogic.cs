@@ -1,22 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
-using System.Threading.Tasks;
+﻿    using System.Diagnostics;
+    using System.Threading.Tasks;
 
-namespace net6_portable_library
-{
-    public abstract class BusinessLogic
+    namespace net6_portable_library
     {
-        protected abstract Task<bool> DisplayAlert(string title, string message, string accept, string cancel);
-        public async Task<bool> TestPopup()
+        public enum RuntimePlatform
         {
-            bool result = await DisplayAlert(
-                title: "Demo", 
-                message: "Do you see this popup?", accept: "Yes", cancel: "No");
+            WinOS,
+            Android,
+            iOS,
+            Web,
+            MAUI,
+        }
+        public abstract class BusinessLogic
+        {
 
-            Debug.WriteLine($"Dialog returned {result}");
-            return result;
+            public BusinessLogic(RuntimePlatform platform) => RuntimePlatform = platform;
+            protected abstract Task<bool> DisplayAlert(string title, string message, string accept, string cancel);
+            public async Task<bool> TestPopup()
+            {
+                bool result = await DisplayAlert(
+                    title: "Demo", 
+                    message: $"Is {RuntimePlatform} popup visible?", accept: "Yes", cancel: "No");
+
+                Debug.WriteLine($"Dialog returned {result}");
+                return result;
+            }
+            public RuntimePlatform RuntimePlatform { get; }
         }
     }
-}

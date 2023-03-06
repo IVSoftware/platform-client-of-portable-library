@@ -17,10 +17,12 @@ namespace platform_client_of_portable_library.WinForms
             _ = _lib.TestPopup();
         }
         // Consume library
-        BusinessLogic _lib = new PlatformBusinessLogic();
+        BusinessLogic _lib = new PlatformBusinessLogic(RuntimePlatform.WinOS);
     }
     class PlatformBusinessLogic : BusinessLogic
     {
+        public PlatformBusinessLogic(RuntimePlatform platform) : base(platform) { }
+
         protected override async Task<bool> DisplayAlert(string title, string message, string accept, string cancel)
         {
             var buttons = $"{accept}.{cancel}".ToUpper();
