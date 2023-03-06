@@ -8,11 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\net6-portable-library\net6-portable-library.csproj" />
+    <Folder Include="Screenshots\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Screenshots\" />
+    <ProjectReference Include="..\net-standard-portable-library\net-standard-portable-library.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using net6_portable_library;
+using net_standard_portable_library;
 
 namespace platform_client_of_portable_library.WinForms
 {

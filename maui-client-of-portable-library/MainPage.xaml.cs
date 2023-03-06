@@ -1,4 +1,6 @@
-﻿using net6_portable_library;
+﻿
+
+using net_standard_portable_library;
 
 namespace maui_client_of_portable_library
 {
